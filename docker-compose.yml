@@ -1,0 +1,68 @@
+version: '3.8'
+
+services:
+  # Servicio para el Backend (Laravel)
+  backend:
+    build:
+      context: ./backend
+    container_name: backend
+    volumes:
+      - ./backend:/var/www
+    ports:
+      - "9000:9000"
+    networks:
+      - app-network
+    depends_on:
+      - mysql
+
+  # Servicio para el Frontend (React)
+  frontend:
+    build:
+      context: ./frontend
+    container_name: frontend
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "3000:3000"
+    networks:
+      - app-network
+
+  # Servicio para Nginx
+  nginx:
+    image: nginx:alpine
+    container_name: nginx
+    ports:
+      - "8080:80"
+    volumes:
+      - ./nginx:/etc/nginx/conf.d
+      - ./backend:/var/www
+      - ./frontend/build:/var/www/frontend/build
+    networks:
+      - app-network
+    depends_on:
+      - backend
+      - frontend
+
+  # Servicio para la base de datos MySQL
+  mysql:
+    image: mysql:8.0
+    container_name: mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpassword
+      MYSQL_DATABASE: interjugadores
+      MYSQL_USER: user
+      MYSQL_PASSWORD: password
+    volumes:
+      - dbdata:/var/lib/mysql
+    networks:
+      - app-network
+
+# Definir una red compartida
+networks:
+  app-network:
+    driver: bridge
+
+# Definir un volumen para la base de datos
+volumes:
+  dbdata:
+    driver: local
