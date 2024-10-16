@@ -1,0 +1,27 @@
+# Ignorar archivos y carpetas de Laravel
+/backend/vendor/
+/backend/node_modules/
+/backend/.env
+/backend/public/hot
+/backend/public/storage
+/backend/storage/*.key
+/backend/storage/*.log
+/backend/storage/*.sqlite
+/backend/storage/framework/cache/*
+/backend/storage/framework/sessions/*
+/backend/storage/framework/views/*
+/backend/storage/logs/*
+
+# Ignorar archivos y carpetas de React
+/frontend/node_modules/
+/frontend/build/
+/frontend/.env
+/frontend/.env.local
+/frontend/.env.development.local
+/frontend/.env.test.local
+/frontend/.env.production.local
+
+# Ignorar archivos de sistema
+.DS_Store
+*.log
+*.tmp
