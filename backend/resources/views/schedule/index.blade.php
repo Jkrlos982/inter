@@ -36,10 +36,10 @@
                                         <td class="py-3 px-6">{{ $schedule->field->name }}</td>
                                         <td class="py-3 px-6">{{ $schedule->category->name }}</td>
                                         <td class="py-3 px-6">{{ $schedule->category->user->name ?? 'N/A' }}</td>
-                                        <td class="py-3 px-6">{{ $schedule->start_time }}</td>
-                                        <td class="py-3 px-6">{{ $schedule->end_time }}</td>
+                                        <td class="py-3 px-6">{{ $schedule->start_time->format('l j \d\e F, g:i a') }}</td>
+                                        <td class="py-3 px-6">{{ $schedule->end_time->format('l j \d\e F, g:i a') }}</td>
                                         <td class="py-3 px-6 text-center">
-                                            <a href="{{ route('schedule.edit', $schedule->id) }}" class="text-blue-600 hover:underline mr-2">Editar</a>
+                                            <a href="{{ route('schedule.edit', $schedule) }}" class="text-blue-600 hover:underline mr-2">Editar</a>
                                             <form action="{{ route('schedule.destroy', $schedule->id) }}" method="POST" class="inline-block">
                                                 @csrf
                                                 @method('DELETE')
