@@ -15,6 +15,177 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    <div class="hidden sm:flex sm:items-center sm:ml-6 pt-1">
+                        <x-dropdown class="sm:ml-6" width="48">
+                            <x-slot name="trigger">
+                                <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                    <div>Categorias</div>
+
+                                    <div class="ml-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('category.index')" active="request()->routeIs('categories.index')">
+                                    {{ __('Ver Categorias') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('category.create')" active="request()->routeIs('categories.create')">
+                                    {{ __('Crear Categoria') }}
+                                </x-dropdown-link>
+                            </x-slot>
+                        </x-dropdown>
+                    </div>
+                    <div class="hidden sm:flex sm:items-center sm:ml-6 pt-1">
+                        <x-dropdown class="sm:ml-6" width="48">
+                            <x-slot name="trigger">
+                                <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                    <div>Profesores</div>
+
+                                    <div class="ml-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('teacher.index')" active="request()->routeIs('teacher.index')">
+                                    {{ __('Ver Profesores') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('teacher.create')" active="request()->routeIs('teacher.create')">
+                                    {{ __('Crear Profesor') }}
+                                </x-dropdown-link>
+                            </x-slot>
+                        </x-dropdown>
+                    </div>
+                    <div class="hidden sm:flex sm:items-center sm:ml-6 pt-1">
+                        <x-dropdown class="sm:ml-6" width="48">
+                            <x-slot name="trigger">
+                                <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                    <div>Alumnos</div>
+
+                                    <div class="ml-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('student.index')" active="request()->routeIs('student.index')">
+                                    {{ __('Ver Alumnos') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('student.create')" active="request()->routeIs('student.create')">
+                                    {{ __('Crear Alumnos') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('assignStudent.index')" active="request()->routeIs('assignStudent.index')">
+                                    {{ __('Asignar Categoria') }}
+                                </x-dropdown-link>
+                            </x-slot>
+                        </x-dropdown>
+                    </div>
+                    <div class="hidden sm:flex sm:items-center sm:ml-6 pt-1">
+                        <x-dropdown class="sm:ml-6" width="48">
+                            <x-slot name="trigger">
+                                <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                    <div>Pagos</div>
+
+                                    <div class="ml-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('payment.index')" active="request()->routeIs('payment.index')">
+                                    {{ __('Ver Pagos') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('payment.create')" active="request()->routeIs('payment.create')">
+                                    {{ __('Crear Pagos') }}
+                                </x-dropdown-link>
+                            </x-slot>
+                        </x-dropdown>
+                    </div>
+                    <div class="hidden sm:flex sm:items-center sm:ml-6 pt-1">
+                        <x-dropdown class="sm:ml-6" width="48">
+                            <x-slot name="trigger">
+                                <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                    <div>Canchas</div>
+
+                                    <div class="ml-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('field.index')" active="request()->routeIs('fields.index')">
+                                    {{ __('Ver Canchas') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('schedule.index')" active="request()->routeIs('schedules.index')">
+                                    {{ __('Horarios') }}
+                                </x-dropdown-link>
+                            </x-slot>
+                        </x-dropdown>
+                    </div>
+                    <div class="hidden sm:flex sm:items-center sm:ml-6 pt-1">
+                        <x-dropdown class="sm:ml-6" width="48">
+                            <x-slot name="trigger">
+                                <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                    <div>Torneos</div>
+
+                                    <div class="ml-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('tournament.index')" active="request()->routeIs('tournament.index')">
+                                    {{ __('Ver Torneos') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('schedule.index')" active="request()->routeIs('schedules.index')">
+                                    {{ __('Ver Partidos') }}
+                                </x-dropdown-link>
+                            </x-slot>
+                        </x-dropdown>
+                    </div>
+                    <div class="hidden sm:flex sm:items-center sm:ml-6 pt-1">
+                        <x-dropdown class="sm:ml-6" width="48">
+                            <x-slot name="trigger">
+                                <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                                    <div>Reportes</div>
+
+                                    <div class="ml-1">
+                                        <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                            <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                        </svg>
+                                    </div>
+                                </button>
+                            </x-slot>
+
+                            <x-slot name="content">
+                                <x-dropdown-link :href="route('player_stats.index')" active="request()->routeIs('player_stats.index')">
+                                    {{ __('Ver Reportes') }}
+                                </x-dropdown-link>
+                                <x-dropdown-link :href="route('player_stats.create')" active="request()->routeIs('player_stats.create')">
+                                    {{ __('Crear Reportes') }}
+                                </x-dropdown-link>
+                            </x-slot>
+                        </x-dropdown>
+                    </div>
                 </div>
             </div>
 
