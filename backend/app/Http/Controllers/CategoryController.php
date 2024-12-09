@@ -62,17 +62,33 @@ class CategoryController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Category $category)
     {
-        //
+        // Filtra los usuarios que tienen el rol 'profe'
+        $profes = User::whereHas('roles', function ($query) {
+            $query->where('name', 'profe');
+        })->get();
+        return view('category.edit', compact('category', 'profes'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Category $category)
     {
-        //
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'year' => 'required|integer|min:2000|max:'.date('Y'), // Valida que sea un año válido.
+            'user_id' => 'required|exists:users,id', // Verifica que el profe asignado exista.
+        ]);
+
+        $category->update([
+            'name' => $request->input('name'),
+            'year' => $request->input('year'),
+            'user_id' => $request->input('user_id'),
+        ]);
+
+        return redirect()->route('category.index')->with('success', 'Categoría actualizada correctamente.');
     }
 
     /**
@@ -80,6 +96,9 @@ class CategoryController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $category = Category::findOrFail($id); // Encuentra la categoría o lanza un error 404.
+        $category->delete(); // Elimina la categoría de la base de datos.
+
+        return redirect()->route('category.index')->with('success', 'Categoría eliminada correctamente.');
     }
 }
