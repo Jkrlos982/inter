@@ -9,7 +9,7 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-purple-200 overflow-hidden shadow-sm sm:rounded-lg mx-auto w-full bg-purple-200">
                 <div class="container mx-auto mt-10 w-full">
-                    <form action="{{ route('student.update') }}" method="POST" enctype="multipart/form-data" class="w-full h-full bg-purple-200 p-8 rounded shadow">
+                    <form action="{{ route('student.update', $student) }}" method="POST" enctype="multipart/form-data" class="w-full h-full bg-purple-200 p-8 rounded shadow">
                         @csrf
                         @method('patch')
 
@@ -22,7 +22,13 @@
 
                                     <div class="mb-4">
                                         <label for="photo" class="block text-white font-medium mb-2">Foto</label>
-                                        <input type="file" name="photo" id="photo" class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 @error('photo') border-red-500 @enderror">
+                                        <input 
+                                            type="file" 
+                                            name="photo" 
+                                            id="photo" 
+                                            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 @error('photo') border-red-500 @enderror"
+                                            value="{{ old('photo', $student->photo) }}" 
+                                        >
                                         <!-- Imagen de vista previa -->
                                         <img id="photoPreview" src="#" alt="Vista previa de la foto" class="mt-2 w-32 h-32 object-cover hidden">
                                         @error('photo')
@@ -32,7 +38,13 @@
                                     
                                     <div class="mb-4">
                                         <label for="name" class="block text-white font-medium mb-2">Nombre</label>
-                                        <input type="text" name="name" id="name" :value="old('name', $student->name) class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 @error('name') border-red-500 @enderror" value="{{ old('name') }}">
+                                        <input 
+                                            type="text" 
+                                            name="name" 
+                                            id="name" 
+                                            :value="old('name', $student->name)" 
+                                            class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 @error('name') border-red-500 @enderror"
+                                        >
                                         @error('name')
                                             <span class="text-red-500 text-sm">{{ $message }}</span>
                                         @enderror

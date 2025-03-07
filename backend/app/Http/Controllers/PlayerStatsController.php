@@ -7,6 +7,7 @@ use App\Models\Player;
 use App\Models\Category;
 use App\Models\Tournament;
 use App\Models\Game;
+use App\Models\Student;
 use Illuminate\Http\Request;
 
 class PlayerStatsController extends Controller
@@ -26,11 +27,11 @@ class PlayerStatsController extends Controller
      */
     public function create()
     {
-        $players = Player::all();
+        $players = Student::all();
         $categories = Category::all();
         $tournaments = Tournament::all();
-        $games = Game::all();
-        return view('player_stats.create', compact('players', 'categories', 'tournaments', 'games'));
+        $matches = Game::all();
+        return view('player_stats.create', compact('players', 'categories', 'tournaments', 'matches'));
     }
 
     /**
